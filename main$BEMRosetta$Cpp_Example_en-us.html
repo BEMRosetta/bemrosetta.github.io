@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>	
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">	
+<META NAME="Generator" CONTENT="U++ HTML Package">	
+<TITLE>BEMRosetta</TITLE>
+<STYLE TYPE="text/css"><!--
+.A{margin:0px 0px 0px 0px;text-indent:0px;text-align:left;color:#000000;font-family:sans-serif;font-size:16pt;font-weight:bold;font-style:normal;}
+.B{margin:0px 0px 0px 0px;text-indent:0px;text-align:left;color:#a05000;font-family:monospace;font-size:10pt;font-weight:normal;font-style:normal;}
+.C{margin:0px 0px 0px 0px;text-indent:0px;text-align:left;color:#000000;font-family:monospace;font-size:10pt;font-weight:normal;font-style:normal;}
+.D{color:#0000dc;}
+.E{color:#a31515;}
+.F{color:#000000;}
+.G{color:#800080;}
+a.l1         { text-decoration:none; font-size: 8pt; font-family: sans-serif; font-weight: normal; }
+a.l1:link    { color:#000000; }
+a.l1:visited { color:#000080; }
+a.l1:hover   { color:#9933CC; }
+a.l1:active  { color:#000000; }
+a.l2         { text-decoration:none; font-size: 12pt; font-family: sans-serif; font-variant: small-caps; }
+a.l2:link    { color:#0066FF; }
+a.l2:visited { color:#FF6600; }
+a.l2:hover   { color:#BC0624; }
+a.l2:active  { color:#BC0024; }
+
+-->
+</STYLE>
+<META NAME="keywords" CONTENT="framework, toolkit, widget, c++, visual, studio, dev-cpp, builder, ide, class, component,wxwidgets, qt, rapid, application, development, rad, mfc, linux, gui, sdl, directx, desktop"><META name="robots" content="index,follow">
+<LINK rel="alternate" type="application/rss+xml" title="SVN changes" href="svnchanges.xml">
+<LINK rel="shortcut icon" type="image/png" href="favicon.png">
+</HEAD><BODY BGCOLOR="#D2D9D2" ALINK="#800000" LINK="#000000" VLINK="#000080"><TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%"><TR><TD COLSPAN="3"></TD>
+</TR>
+</TABLE>
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%"><TR><TD COLSPAN="3" BGCOLOR="#D2D9D2" HEIGHT="6"></TD>
+</TR>
+<TR><TD VALIGN="TOP" WIDTH="100%" BGCOLOR="#D2D9D2"><TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" BGCOLOR="#FFFFFF" WIDTH="100%" style="border-style: solid; border-width: 1px; border-color: #6E89AE;padding: 10px;;"><TR><TD><TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%"><TR><TD><p class="A">C++ Example</p>
+<p class="A">&nbsp;</p>
+<p class="B">#include &lt;stdio.h&gt;</p>
+<p class="B">#include &lt;stdlib.h&gt; </p>
+<p class="B">#include &quot;.test\\libbemrosetta.hpp&quot;</p>
+<p class="C">&nbsp;</p>
+<p class="C"><span class="D">int</span> main() {</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;<span class="D">try</span> {</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<span class="E">&quot;BEMRosetta C++ demo\n&quot;</span>);</p>
+<p class="C">&nbsp;</p>
+<p class="B"><span class="F">&nbsp;&nbsp;&nbsp;&nbsp;</span>#ifdef BEMROSETTA_DYNAMIC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// DLL is loaded in runtime</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BEMRosetta bmr(<span class="E">&quot;libbemrosetta.dll&quot;</span>);</p>
+<p class="B"><span class="F">&nbsp;&nbsp;&nbsp;&nbsp;</span>#else&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// DLL has to be in the .exe folder or in the PATH</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BEMRosetta bmr;</p>
+<p class="B"><span class="F">&nbsp;&nbsp;&nbsp;&nbsp;</span>#endif</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<span class="E">&quot;\nBEMRosetta version is %s\n&quot;</span>, bmr.Version());</p>
+<p class="C">&nbsp;</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<span class="E">&quot;\n- Mesh handling&quot;</span>);</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="D">const</span> <span class="D">char</span> *meshFile = <span class="E">&quot;../examples/capytaine/Orca/Body_1.gdf&quot;</span>;</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="D">int</span> idMesh = bmr.Mesh.Load(meshFile);</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<span class="E">&quot;\nLoaded mesh '%s'&quot;</span>, meshFile);</p>
+<p class="C">&nbsp;</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="D">double</span> volx, voly, volz;</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bmr.Mesh.UnderwaterVolume.Get(&amp;volx, &amp;voly, &amp;volz);</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<span class="E">&quot;\nUnderwater volume %f&quot;</span>, (volx + voly + volz)/<span class="G">3</span>);</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="D">double</span> x, y, z;</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bmr.Mesh.Centre.Volume.Get(&amp;x, &amp;y, &amp;z);</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<span class="E">&quot;\nCentre of volume is %f, %f, %f&quot;</span>, x, y, z);</p>
+<p class="C">&nbsp;</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<span class="E">&quot;\n- BEM case generation&quot;</span>);</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bmr.Mesh.Cg.Set(<span class="G">0</span>, <span class="G">0</span>, -<span class="G">1</span>);</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bmr.Mesh.C0.Set(<span class="G">0</span>, <span class="G">0</span>, -<span class="G">1</span>);</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="D">double</span> M[] = {<span class="G">9.8E5</span>, &nbsp;&nbsp;&nbsp;&nbsp;<span class="G">0</span>, &nbsp;&nbsp;&nbsp;&nbsp;<span class="G">0</span>, &nbsp;&nbsp;<span class="G">0</span>, &nbsp;&nbsp;<span class="G">0</span>, &nbsp;&nbsp;<span class="G">0</span>,</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<span class="G">0</span>, <span class="G">9.8E5</span>, &nbsp;&nbsp;&nbsp;&nbsp;<span class="G">0</span>, &nbsp;&nbsp;<span class="G">0</span>, &nbsp;&nbsp;<span class="G">0</span>, &nbsp;&nbsp;<span class="G">0</span>,</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<span class="G">0</span>, &nbsp;&nbsp;&nbsp;&nbsp;<span class="G">0</span>, <span class="G">9.8E5</span>, &nbsp;&nbsp;<span class="G">0</span>, &nbsp;&nbsp;<span class="G">0</span>, &nbsp;&nbsp;<span class="G">0</span>,</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<span class="G">0</span>, &nbsp;&nbsp;&nbsp;&nbsp;<span class="G">0</span>, &nbsp;&nbsp;&nbsp;&nbsp;<span class="G">0</span>, <span class="G">1E7</span>, &nbsp;&nbsp;<span class="G">0</span>, &nbsp;&nbsp;<span class="G">0</span>,</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<span class="G">0</span>, &nbsp;&nbsp;&nbsp;&nbsp;<span class="G">0</span>, &nbsp;&nbsp;&nbsp;&nbsp;<span class="G">0</span>, &nbsp;&nbsp;<span class="G">0</span>, <span class="G">1E7</span>, &nbsp;&nbsp;<span class="G">0</span>,</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<span class="G">0</span>, &nbsp;&nbsp;&nbsp;&nbsp;<span class="G">0</span>, &nbsp;&nbsp;&nbsp;&nbsp;<span class="G">0</span>, &nbsp;&nbsp;<span class="G">0</span>, &nbsp;&nbsp;<span class="G">0</span>, <span class="G">1E7</span>};</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="D">int</span> dim[] = {<span class="G">6</span>, <span class="G">6</span>};</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bmr.Mesh.Inertia.Set(M, dim);</p>
+<p class="C">&nbsp;</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bmr.Bem.New();</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bmr.Bem.depth.Set(<span class="G">50</span>);</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bmr.Bem.g.Set(<span class="G">9.81</span>);</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bmr.Bem.rho.Set(<span class="G">1025</span>);</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="D">double</span> w[] = {<span class="G">0.1</span>, <span class="G">0.5</span>, <span class="G">1</span>, <span class="G">1.5</span>, <span class="G">2</span>};</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bmr.Bem.w.Set(w, <span class="D">sizeof</span>(w)/<span class="D">sizeof</span>(<span class="D">double</span>));</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="D">double</span> head[] = {<span class="G">0</span>, <span class="G">45</span>, <span class="G">90</span>};</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bmr.Bem.headings.Set(head, <span class="D">sizeof</span>(head)/<span class="D">sizeof</span>(<span class="D">double</span>));</p>
+<p class="C">&nbsp;</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bmr.Bem.LoadMesh(<span class="G">0</span>, idMesh);</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<span class="E">&quot;\nSaving it in Capytaine format&quot;</span>);</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bmr.Bem.SaveCase(<span class="E">&quot;../unittest/.test/Capy&quot;</span>, <span class="E">&quot;Capytaine .py&quot;</span>, <span class="D">false</span>, <span class="D">false</span>, <span class="D">true</span>, <span class="D">true</span>, <span class="E">&quot;No&quot;</span>, <span class="D">false</span>, <span class="D">false</span>, <span class="G">1</span>, <span class="G">4</span>, <span class="D">false</span>, <span class="D">false</span>);</p>
+<p class="C">&nbsp;</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<span class="E">&quot;\nRunning it in Capytaine&quot;</span>);</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;system(<span class="E">&quot;cd /d ..\\unittest\\.test\\Capy &amp;&amp; capytaine.bat&quot;</span>);</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<span class="E">&quot;\nLoading the results in .nc format&quot;</span>);</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bmr.Bem.Load(<span class="E">&quot;..\\unittest\\.test\\Capy\\capytaine.nc&quot;</span>);</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<span class="E">&quot;\nSaving the results in .h5 format&quot;</span>);</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bmr.Bem.Save(<span class="E">&quot;..\\unittest\\.test\\Capy\\capytaine.h5&quot;</span>);</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;} <span class="D">catch</span>(std::runtime_error e) {</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<span class="E">&quot;\nError found: %s&quot;</span>, e.what());</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;} <span class="D">catch</span> (...) {</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<span class="E">&quot;\nError found&quot;</span>);</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;printf(<span class="E">&quot;\nProgram ended\n&quot;</span>);</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;<span class="D">return</span> <span class="G">0</span>;</p>
+<p class="C">}</p>
+</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+</TABLE>
+</BODY>
