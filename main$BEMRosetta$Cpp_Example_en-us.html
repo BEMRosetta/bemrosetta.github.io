@@ -84,7 +84,7 @@ a.l2:active  { color:#BC0024; }
 <p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="D">double</span> head[] = {<span class="G">0</span>, <span class="G">45</span>, <span class="G">90</span>};</p>
 <p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bmr.Bem.headings.Set(head, <span class="D">sizeof</span>(head)/<span class="D">sizeof</span>(<span class="D">double</span>));</p>
 <p class="C">&nbsp;</p>
-<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bmr.Bem.LoadMesh(<span class="G">0</span>, idMesh);</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bmr.Bem.Mesh.Load(<span class="G">0</span>, idMesh);</p>
 <p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 <p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<span class="E">&quot;\nSaving it in Capytaine format&quot;</span>);</p>
 <p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bmr.Bem.SaveCase(<span class="E">&quot;../unittest/.test/Capy&quot;</span>, <span class="E">&quot;Capytaine .py&quot;</span>, <span class="D">false</span>, <span class="D">false</span>, <span class="D">true</span>, <span class="D">true</span>, <span class="E">&quot;No&quot;</span>, <span class="D">false</span>, <span class="D">false</span>, <span class="G">1</span>, <span class="G">4</span>, <span class="D">false</span>, <span class="D">false</span>);</p>
@@ -107,6 +107,7 @@ a.l2:active  { color:#BC0024; }
 <p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 <p class="C">&nbsp;&nbsp;&nbsp;&nbsp;<span class="D">return</span> <span class="G">0</span>;</p>
 <p class="C">}</p>
+<p class="C">&nbsp;</p>
 </TD>
 </TR>
 </TABLE>
