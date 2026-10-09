@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>	
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">	
+<META NAME="Generator" CONTENT="U++ HTML Package">	
+<TITLE>BEMRosetta</TITLE>
+<STYLE TYPE="text/css"><!--
+.A{margin:0px 0px 0px 0px;text-indent:0px;text-align:left;color:#000000;font-family:sans-serif;font-size:16pt;font-weight:bold;font-style:normal;}
+.B{margin:0px 0px 0px 0px;text-indent:0px;text-align:left;color:#000000;font-family:monospace;font-size:10pt;font-weight:normal;font-style:normal;}
+.C{color:#a05000;}
+.D{color:#a31515;}
+.E{color:#800080;}
+.F{color:#0000dc;}
+a.l1         { text-decoration:none; font-size: 8pt; font-family: sans-serif; font-weight: normal; }
+a.l1:link    { color:#000000; }
+a.l1:visited { color:#000080; }
+a.l1:hover   { color:#9933CC; }
+a.l1:active  { color:#000000; }
+a.l2         { text-decoration:none; font-size: 12pt; font-family: sans-serif; font-variant: small-caps; }
+a.l2:link    { color:#0066FF; }
+a.l2:visited { color:#FF6600; }
+a.l2:hover   { color:#BC0624; }
+a.l2:active  { color:#BC0024; }
+
+-->
+</STYLE>
+<META NAME="keywords" CONTENT="framework, toolkit, widget, c++, visual, studio, dev-cpp, builder, ide, class, component,wxwidgets, qt, rapid, application, development, rad, mfc, linux, gui, sdl, directx, desktop"><META name="robots" content="index,follow">
+<LINK rel="alternate" type="application/rss+xml" title="SVN changes" href="svnchanges.xml">
+<LINK rel="shortcut icon" type="image/png" href="favicon.png">
+</HEAD><BODY BGCOLOR="#D2D9D2" ALINK="#800000" LINK="#000000" VLINK="#000080"><TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%"><TR><TD COLSPAN="3"></TD>
+</TR>
+</TABLE>
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%"><TR><TD COLSPAN="3" BGCOLOR="#D2D9D2" HEIGHT="6"></TD>
+</TR>
+<TR><TD VALIGN="TOP" WIDTH="100%" BGCOLOR="#D2D9D2"><TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" BGCOLOR="#FFFFFF" WIDTH="100%" style="border-style: solid; border-width: 1px; border-color: #6E89AE;padding: 10px;;"><TR><TD><TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%"><TR><TD><p class="A">Python Example</p>
+<p class="A">&nbsp;</p>
+<p class="B"><span class="C">import</span> os</p>
+<p class="B"><span class="C">import</span> sys</p>
+<p class="B">sys.path.append(<span class="D">&quot;.test&quot;</span>)</p>
+<p class="B"><span class="C">from</span> libbemrosetta <span class="C">import</span> BEMRosetta</p>
+<p class="B">&nbsp;</p>
+<p class="B">print(<span class="D">&quot;libbemrosetta.py test&quot;</span>)</p>
+<p class="B">&nbsp;</p>
+<p class="B"><span class="C">try</span>:</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;bemr = BEMRosetta(<span class="D">&quot;./.test/libbemrosetta.dll&quot;</span>)</p>
+<p class="B">&nbsp;</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;print(bemr.Version())</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;bemr.Mesh.Load(<span class="D">&quot;../examples/hydrostar/Mesh/Ship.hst&quot;</span>)</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;bemr.Mesh.Save(<span class="D">&quot;./.test/kk.gdf&quot;</span>, <span class="D">&quot;.gdf&quot;</span>, <span class="E">0</span>, <span class="E">0</span>)</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;bemr.Mesh.Load(<span class="D">&quot;./.test/kk.gdf&quot;</span>)</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;_, volx, voly, volz = bemr.Mesh.Volume.Get()</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;print(<span class="D">f&quot;Volume &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x: {volx}, y: {voly}, z: {volz}&quot;</span>)</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;_, volx, voly, volz &nbsp;= bemr.Mesh.UnderwaterVolume.Get()</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;print(<span class="D">f&quot;Underwater volume x: {volx}, y: {voly}, z: {volz}&quot;</span>)</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;print(<span class="D">f&quot;Surface &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {bemr.Mesh.Surface.Get()}&quot;</span>)</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;print(<span class="D">f&quot;Underwater surface : {bemr.Mesh.UnderwaterSurface.Get()}&quot;</span>)</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;bemr.Mesh.Cg.Set(<span class="E">0</span>, <span class="E">0</span>, -<span class="E">1</span>)</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;bemr.Mesh.C0.Set(<span class="E">0</span>, <span class="E">0</span>, -<span class="E">1</span>)</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;print(<span class="D">f&quot;Stiffness matrix &nbsp;&nbsp;: {bemr.Mesh.HydrostaticStiffness.Get()}&quot;</span>)</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;os.remove(<span class="D">&quot;./.test/kk.gdf&quot;</span>)</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;</p>
+<p class="B"><span class="C">except</span> Exception <span class="F">as</span> e:</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;print(<span class="D">f&quot;\nAn error occurred: {e}&quot;</span>)</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;sys.exit(<span class="E">1</span>)</p>
+</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+</TABLE>
+</BODY>
