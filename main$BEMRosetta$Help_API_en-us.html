@@ -13,10 +13,9 @@
 .F{color:#a05000;font-family:monospace;}
 .G{margin:0px 0px 0px 0px;text-indent:0px;text-align:left;color:#000000;font-family:monospace;font-size:11pt;font-weight:normal;font-style:normal;}
 .H{color:#a31515;}
-.I{font-family:sans-serif;}
-.J{color:#a05000;}
-.K{display:list-item;list-style-type:disc;margin:3px 0px 3px 20px;text-indent:0px;text-align:justify;color:#000000;font-family:sans-serif;font-size:11pt;font-weight:normal;font-style:normal;}
-.L{margin:0px 0px 0px 0px;text-indent:0px;text-align:left;color:#000000;font-family:sans-serif;font-size:12pt;font-weight:normal;font-style:normal;}
+.I{font-family:monospace;}
+.J{display:list-item;list-style-type:disc;margin:3px 0px 3px 20px;text-indent:0px;text-align:justify;color:#000000;font-family:sans-serif;font-size:11pt;font-weight:normal;font-style:normal;}
+.K{margin:0px 0px 0px 0px;text-indent:0px;text-align:left;color:#000000;font-family:sans-serif;font-size:12pt;font-weight:normal;font-style:normal;}
 a.l1         { text-decoration:none; font-size: 8pt; font-family: sans-serif; font-weight: normal; }
 a.l1:link    { color:#000000; }
 a.l1:visited { color:#000080; }
@@ -30,10 +29,10 @@ a.l2:active  { color:#BC0024; }
 
 -->
 </STYLE>
-<META NAME="keywords" CONTENT="framework, toolkit, widget, c++, visual, studio, dev-cpp, builder, ide, class, component,wxwidgets, qt, rapid, application, development, rad, mfc, linux, gui, sdl, directx, desktop"><META name="robots" content="index,follow">
+<META NAME="keywords" CONTENT="c++, BEMRosetta, libbemrosetta, BEM, Wamit, AQWA, Capytaine, Nemoh, HAMS, HAMS-MREL, HydroStar, hydrodynamics"><META name="robots" content="index,follow">
 <LINK rel="alternate" type="application/rss+xml" title="SVN changes" href="svnchanges.xml">
 <LINK rel="shortcut icon" type="image/png" href="favicon.png">
-</HEAD><BODY BGCOLOR="#D2D9D2" ALINK="#800000" LINK="#000000" VLINK="#000080"><TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%"><TR><TD COLSPAN="3"></TD>
+</HEAD><BODY BGCOLOR="#D2D9D2" ALINK="#800000" LINK="#000000" VLINK="#000080"><TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%"><TR><TD COLSPAN="3"><table width="100%" style="background-color:#B2F8FF; border:0; padding:6px 10px;"><tr><td align="left" valign="middle"><a href="index.html" style="font-family:Arial, Helvetica, sans-serif; font-size:18pt; font-weight:bold; color:#1565C0; text-decoration:none; font-variant:normal; text-transform:none;">BEMRosetta</a></td><td align="right" valign="middle"><a href="index.html"><img src="logo.png" alt="BEMRosetta" border="0" height="40"></a></td></tr></table></TD>
 </TR>
 </TABLE>
 <TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%"><TR><TD COLSPAN="3" BGCOLOR="#D2D9D2" HEIGHT="6"></TD>
@@ -53,7 +52,7 @@ a.l2:active  { color:#BC0024; }
 <p class="B">For C and C++, there is no need to incorporate BEMRosetta’s source code into the application’s build system, whether it uses CMake or another compilation strategy. The library can be accessed in either of two ways:</p>
 <p class="B">&nbsp;</p>
 <p class="D">Linking with libbemrosetta.lib.</p>
-<p class="D">Loading the dynamic library at runtime, using the DLL on Windows.</p>
+<p class="D">Loading the dynamic library at runtime (DLL on Windows)</p>
 <p class="B">&nbsp;</p>
 <p class="B">Python provides access to similar operations through its own interface, using Python data structures rather than the C/C++ structures.</p>
 <p class="B">&nbsp;</p>
@@ -70,40 +69,40 @@ a.l2:active  { color:#BC0024; }
 <p class="B">&nbsp;</p>
 <p class="C">Working with the API</p>
 <p class="B">&nbsp;</p>
-<p class="B">Mesh, BEM and OpenFAST operations use an active mesh or model, selected through its identifier,rather than a pointer or a complex structure. Applications use these IDs to identify the objects they want to work with, while BEMRosetta manages their internal representation. This allows several meshes or cases to be loaded and the required one to be selected for subsequent operations.</p>
+<p class="B">Mesh, BEM and OpenFAST operations use an active mesh or model, selected through its identifier, rather than a pointer or a complex structure. Applications use these IDs to identify the objects they want to work with, while BEMRosetta manages their internal representation. This allows several meshes or cases to be loaded and the required one to be selected for subsequent operations.</p>
 <p class="B">&nbsp;</p>
-<p class="B">All features available in the GUI are also available in the API, and vice versa. If you notice that a feature is missing from one that you have seen in the other, please let us know, since both use the same library and such features are usually very easy to add.</p>
+<p class="B">All features available in the GUI may be also available in the API, and vice versa. If you notice that a feature is missing from one that you have seen in the other, please let us know, since both use the same library and such features are usually very easy to add.</p>
 <p class="B">&nbsp;</p>
 <p class="C">How to start in C++</p>
 <p class="B">&nbsp;</p>
-<p class="B">Include at the beginning <span class="F">&quot;libbemrosetta.hpp&quot;</span>.</p>
+<p class="B">Include <span class="F">&quot;libbemrosetta.hpp&quot;</span> at the beginning.</p>
 <p class="B">&nbsp;</p>
 <p class="B">And create a variable with the path to the dynamic library to the constructor:</p>
 <p class="B">&nbsp;</p>
-<p class="G">BEMRosetta mybemr(<span class="H">&quot;PATH TO/libbemrosetta.dll&quot;</span>;</p>
+<p class="G">BEMRosetta mybemr(<span class="H">&quot;PATH TO/libbemrosetta.dll&quot;</span>);</p>
 <p class="B">&nbsp;</p>
 <p class="C">How to start in C</p>
 <p class="B">&nbsp;</p>
-<p class="B">Include at the beginning <span class="F">&quot;libbemrosetta.h&quot;</span>.</p>
+<p class="B">Include <span class="F">&quot;libbemrosetta.h&quot;</span> at the beginning.</p>
 <p class="B">&nbsp;</p>
 <p class="B">And create a variable with the path to the dynamic library to the constructor:</p>
 <p class="B">&nbsp;</p>
-<p class="G">BEMRosetta mybemr = BEMRosetta_Init(<span class="H">&quot;PATH TO/libbemrosetta.dll&quot;</span>);</p>
+<p class="G">BEMRosetta mybemr = BEMRosetta_Init(<span class="H">&quot;PATH_TO/libbemrosetta.dll&quot;</span>);</p>
 <p class="B">&nbsp;</p>
 <p class="C">How to start in Python</p>
 <p class="C">&nbsp;</p>
-<p class="G"><span class="I">Include at the beginning </span><span class="J">from</span> libbemrosetta <span class="J">import</span> BEMRosetta</p>
+<p class="B">Include <span class="F">from</span><span class="I"> libbemrosetta </span><span class="F">import</span><span class="I"> BEMRosetta</span> at the beginning.</p>
 <p class="B">&nbsp;</p>
 <p class="B">And create a variable with the path to the dynamic library to the constructor:</p>
 <p class="B">&nbsp;</p>
-<p class="G">mybemr = BEMRosetta(<span class="H">&quot;PATH TO/libbemrosetta.dll&quot;</span>)</p>
+<p class="G">mybemr = BEMRosetta(<span class="H">&quot;PATH_TO/libbemrosetta.dll&quot;</span>)</p>
 <p class="B">&nbsp;</p>
 <p class="C">API function descriptions and examples</p>
 <p class="B">&nbsp;</p>
-<p class="K"><a href="main$BEMRosetta$Python_en-us.html">Python API</a> and <a href="main$BEMRosetta$Python_Example_en-us.html">Python Example</a></p>
-<p class="K"><a href="main$BEMRosetta$Cpp_en-us.html">C++ API</a> and <a href="main$BEMRosetta$Cpp_Example_en-us.html">C++ Example</a>.</p>
-<p class="K"><a href="main$BEMRosetta$C_en-us.html">C API</a> and <a href="main$BEMRosetta$C_Example_en-us.html">C Example</a>.</p>
-<p class="L">&nbsp;</p>
+<p class="J"><a href="main$BEMRosetta$Python_en-us.html">Python API</a> and <a href="main$BEMRosetta$Python_Example_en-us.html">Python Example</a></p>
+<p class="J"><a href="main$BEMRosetta$Cpp_en-us.html">C++ API</a> and <a href="main$BEMRosetta$Cpp_Example_en-us.html">C++ Example</a>.</p>
+<p class="J"><a href="main$BEMRosetta$C_en-us.html">C API</a> and <a href="main$BEMRosetta$C_Example_en-us.html">C Example</a>.</p>
+<p class="K">&nbsp;</p>
 </TD>
 </TR>
 </TABLE>
