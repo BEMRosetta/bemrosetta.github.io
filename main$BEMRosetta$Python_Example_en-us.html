@@ -27,7 +27,7 @@ a.l2:active  { color:#BC0024; }
 <META NAME="keywords" CONTENT="c++, BEMRosetta, libbemrosetta, BEM, Wamit, AQWA, Capytaine, Nemoh, HAMS, HAMS-MREL, HydroStar, hydrodynamics"><META name="robots" content="index,follow">
 <LINK rel="alternate" type="application/rss+xml" title="SVN changes" href="svnchanges.xml">
 <LINK rel="shortcut icon" type="image/png" href="favicon.png">
-</HEAD><BODY BGCOLOR="#D2D9D2" ALINK="#800000" LINK="#000000" VLINK="#000080"><TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%"><TR><TD COLSPAN="3"><table width="100%" style="background-color:#B2F8FF; border:0; padding:6px 10px;"><tr><td align="left" valign="middle"><a href="index.html" style="font-family:Arial, Helvetica, sans-serif; font-size:18pt; font-weight:bold; color:#1565C0; text-decoration:none; font-variant:normal; text-transform:none;">BEMRosetta</a></td><td align="right" valign="middle"><a href="index.html"><img src="logo.png" alt="BEMRosetta" border="0" height="40"></a></td></tr></table></TD>
+</HEAD><BODY BGCOLOR="#D2D9D2" ALINK="#800000" LINK="#000000" VLINK="#000080"><TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%"><TR><TD COLSPAN="3"><table width="100%" style="background-color:#B2F8FF; border:0; padding:6px 10px;"><tr><td align="left" valign="middle"><a href="index.html" style="font-family:Arial, Helvetica, sans-serif; font-size:18pt; font-weight:bold; color:#1565C0; text-decoration:none; font-variant:normal; text-transform:none;">BEMRosetta</a></td><td align="right" valign="middle"><a href="index.html"><img src="index.html_0.png" alt="BEMRosetta" border="0" height="40"></a></td></tr></table></TD>
 </TR>
 </TABLE>
 <TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%"><TR><TD COLSPAN="3" BGCOLOR="#D2D9D2" HEIGHT="6"></TD>
@@ -42,22 +42,22 @@ a.l2:active  { color:#BC0024; }
 <p class="B">print(<span class="D">&quot;libbemrosetta.py test&quot;</span>)</p>
 <p class="B">&nbsp;</p>
 <p class="B"><span class="C">try</span>:</p>
-<p class="B"> &nbsp;&nbsp;&nbsp;bemr = BEMRosetta(<span class="D">&quot;./.test/libbemrosetta.dll&quot;</span>)</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;bmr = BEMRosetta(<span class="D">&quot;./.test/libbemrosetta.dll&quot;</span>)</p>
 <p class="B">&nbsp;</p>
-<p class="B"> &nbsp;&nbsp;&nbsp;print(bemr.Version())</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;print(bmr.Version())</p>
 <p class="B"> &nbsp;&nbsp;&nbsp;</p>
-<p class="B"> &nbsp;&nbsp;&nbsp;bemr.Mesh.Load(<span class="D">&quot;../examples/hydrostar/Mesh/Ship.hst&quot;</span>)</p>
-<p class="B"> &nbsp;&nbsp;&nbsp;bemr.Mesh.Save(<span class="D">&quot;./.test/kk.gdf&quot;</span>, <span class="D">&quot;.gdf&quot;</span>, <span class="E">0</span>, <span class="E">0</span>)</p>
-<p class="B"> &nbsp;&nbsp;&nbsp;bemr.Mesh.Load(<span class="D">&quot;./.test/kk.gdf&quot;</span>)</p>
-<p class="B"> &nbsp;&nbsp;&nbsp;_, volx, voly, volz = bemr.Mesh.Volume.Get()</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;bmr.Mesh.Load(<span class="D">&quot;../examples/hydrostar/Mesh/Ship.hst&quot;</span>)</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;bmr.Mesh.Save(<span class="D">&quot;./.test/kk.gdf&quot;</span>, <span class="D">&quot;.gdf&quot;</span>, <span class="E">0</span>, <span class="E">0</span>)</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;bmr.Mesh.Load(<span class="D">&quot;./.test/kk.gdf&quot;</span>)</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;_, volx, voly, volz = bmr.Mesh.Volume.Get()</p>
 <p class="B"> &nbsp;&nbsp;&nbsp;print(<span class="D">f&quot;Volume &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x: {volx}, y: {voly}, z: {volz}&quot;</span>)</p>
-<p class="B"> &nbsp;&nbsp;&nbsp;_, volx, voly, volz &nbsp;= bemr.Mesh.UnderwaterVolume.Get()</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;_, volx, voly, volz &nbsp;= bmr.Mesh.UnderwaterVolume.Get()</p>
 <p class="B"> &nbsp;&nbsp;&nbsp;print(<span class="D">f&quot;Underwater volume x: {volx}, y: {voly}, z: {volz}&quot;</span>)</p>
-<p class="B"> &nbsp;&nbsp;&nbsp;print(<span class="D">f&quot;Surface &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {bemr.Mesh.Surface.Get()}&quot;</span>)</p>
-<p class="B"> &nbsp;&nbsp;&nbsp;print(<span class="D">f&quot;Underwater surface : {bemr.Mesh.UnderwaterSurface.Get()}&quot;</span>)</p>
-<p class="B"> &nbsp;&nbsp;&nbsp;bemr.Mesh.Cg.Set(<span class="E">0</span>, <span class="E">0</span>, -<span class="E">1</span>)</p>
-<p class="B"> &nbsp;&nbsp;&nbsp;bemr.Mesh.C0.Set(<span class="E">0</span>, <span class="E">0</span>, -<span class="E">1</span>)</p>
-<p class="B"> &nbsp;&nbsp;&nbsp;print(<span class="D">f&quot;Stiffness matrix &nbsp;&nbsp;: {bemr.Mesh.HydrostaticStiffness.Get()}&quot;</span>)</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;print(<span class="D">f&quot;Surface &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {bmr.Mesh.Surface.Get()}&quot;</span>)</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;print(<span class="D">f&quot;Underwater surface : {bmr.Mesh.UnderwaterSurface.Get()}&quot;</span>)</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;bmr.Mesh.Cg.Set(<span class="E">0</span>, <span class="E">0</span>, -<span class="E">1</span>)</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;bmr.Mesh.C0.Set(<span class="E">0</span>, <span class="E">0</span>, -<span class="E">1</span>)</p>
+<p class="B"> &nbsp;&nbsp;&nbsp;print(<span class="D">f&quot;Stiffness matrix &nbsp;&nbsp;: {bmr.Mesh.HydrostaticStiffness.Get()}&quot;</span>)</p>
 <p class="B"> &nbsp;&nbsp;&nbsp;</p>
 <p class="B"> &nbsp;&nbsp;&nbsp;os.remove(<span class="D">&quot;./.test/kk.gdf&quot;</span>)</p>
 <p class="B"> &nbsp;&nbsp;&nbsp;</p>

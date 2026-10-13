@@ -3,7 +3,7 @@
 <HEAD>	
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">	
 <META NAME="Generator" CONTENT="U++ HTML Package">	
-<TITLE>C Example :: BEMRosetta</TITLE>
+<TITLE>BEMRosetta</TITLE>
 <STYLE TYPE="text/css"><!--
 .A{margin:0px 0px 0px 0px;text-indent:0px;text-align:left;color:#000000;font-family:sans-serif;font-size:16pt;font-weight:bold;font-style:normal;}
 .B{margin:0px 0px 0px 0px;text-indent:0px;text-align:left;color:#a05000;font-family:monospace;font-size:10pt;font-weight:normal;font-style:normal;}
@@ -28,7 +28,7 @@ a.l2:active  { color:#BC0024; }
 <META NAME="keywords" CONTENT="c++, BEMRosetta, libbemrosetta, BEM, Wamit, AQWA, Capytaine, Nemoh, HAMS, HAMS-MREL, HydroStar, hydrodynamics"><META name="robots" content="index,follow">
 <LINK rel="alternate" type="application/rss+xml" title="SVN changes" href="svnchanges.xml">
 <LINK rel="shortcut icon" type="image/png" href="favicon.png">
-</HEAD><BODY BGCOLOR="#D2D9D2" ALINK="#800000" LINK="#000000" VLINK="#000080"><TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%"><TR><TD COLSPAN="3"><table width="100%" style="background-color:#B2F8FF; border:0; padding:6px 10px;"><tr><td align="left" valign="middle"><a href="index.html" style="font-family:Arial, Helvetica, sans-serif; font-size:18pt; font-weight:bold; color:#1565C0; text-decoration:none; font-variant:normal; text-transform:none;">BEMRosetta</a></td><td align="right" valign="middle"><a href="index.html"><img src="logo.png" alt="BEMRosetta" border="0" height="40"></a></td></tr></table></TD>
+</HEAD><BODY BGCOLOR="#D2D9D2" ALINK="#800000" LINK="#000000" VLINK="#000080"><TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%"><TR><TD COLSPAN="3"><table width="100%" style="background-color:#B2F8FF; border:0; padding:6px 10px;"><tr><td align="left" valign="middle"><a href="index.html" style="font-family:Arial, Helvetica, sans-serif; font-size:18pt; font-weight:bold; color:#1565C0; text-decoration:none; font-variant:normal; text-transform:none;">BEMRosetta</a></td><td align="right" valign="middle"><a href="index.html"><img src="index.html_0.png" alt="BEMRosetta" border="0" height="40"></a></td></tr></table></TD>
 </TR>
 </TABLE>
 <TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%"><TR><TD COLSPAN="3" BGCOLOR="#D2D9D2" HEIGHT="6"></TD>
@@ -41,7 +41,7 @@ a.l2:active  { color:#BC0024; }
 <p class="C">&nbsp;</p>
 <p class="C"><span class="D">void</span> my_error_handler(<span class="D">const</span> <span class="D">char</span> *message, <span class="D">void</span> *dummy) {</p>
 <p class="C">&nbsp;&nbsp;&nbsp;&nbsp;printf(<span class="E">&quot;\nError %s&quot;</span>, message);</p>
-<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;printf(<span class="E">&quot;\nClick Enter to end&quot;</span>);</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;printf(<span class="E">&quot;\Press Enter to end&quot;</span>);</p>
 <p class="C">&nbsp;&nbsp;&nbsp;&nbsp;getchar();&nbsp;&nbsp;&nbsp;&nbsp;</p>
 <p class="C">&nbsp;&nbsp;&nbsp;&nbsp;exit(-<span class="F">1</span>);</p>
 <p class="C">}</p>
@@ -56,7 +56,7 @@ a.l2:active  { color:#BC0024; }
 <p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BEMRosetta bmr = BEMRosetta_Init();</p>
 <p class="B"><span class="G">&nbsp;&nbsp;&nbsp;&nbsp;</span>#endif</p>
 <p class="C">&nbsp;&nbsp;&nbsp;&nbsp;</p>
-<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bmr.SetErrorHandler(my_error_handler, <span class="F">0</span>);</p>
+<p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bmr.SetErrorHandler(my_error_handler, NULL);</p>
 <p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<span class="E">&quot;\nBEMRosetta version is %s\n&quot;</span>, bmr.Version());</p>
 <p class="C">&nbsp;</p>
 <p class="C">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<span class="E">&quot;\n- Mesh handling&quot;</span>);</p>

@@ -31,7 +31,7 @@ a.l2:active  { color:#BC0024; }
 <META NAME="keywords" CONTENT="c++, BEMRosetta, libbemrosetta, BEM, Wamit, AQWA, Capytaine, Nemoh, HAMS, HAMS-MREL, HydroStar, hydrodynamics"><META name="robots" content="index,follow">
 <LINK rel="alternate" type="application/rss+xml" title="SVN changes" href="svnchanges.xml">
 <LINK rel="shortcut icon" type="image/png" href="favicon.png">
-</HEAD><BODY BGCOLOR="#D2D9D2" ALINK="#800000" LINK="#000000" VLINK="#000080"><TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%"><TR><TD COLSPAN="3"><table width="100%" style="background-color:#B2F8FF; border:0; padding:6px 10px;"><tr><td align="left" valign="middle"><a href="index.html" style="font-family:Arial, Helvetica, sans-serif; font-size:18pt; font-weight:bold; color:#1565C0; text-decoration:none; font-variant:normal; text-transform:none;">BEMRosetta</a></td><td align="right" valign="middle"><a href="index.html"><img src="logo.png" alt="BEMRosetta" border="0" height="40"></a></td></tr></table></TD>
+</HEAD><BODY BGCOLOR="#D2D9D2" ALINK="#800000" LINK="#000000" VLINK="#000080"><TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%"><TR><TD COLSPAN="3"><table width="100%" style="background-color:#B2F8FF; border:0; padding:6px 10px;"><tr><td align="left" valign="middle"><a href="index.html" style="font-family:Arial, Helvetica, sans-serif; font-size:18pt; font-weight:bold; color:#1565C0; text-decoration:none; font-variant:normal; text-transform:none;">BEMRosetta</a></td><td align="right" valign="middle"><a href="index.html"><img src="index.html_0.png" alt="BEMRosetta" border="0" height="40"></a></td></tr></table></TD>
 </TR>
 </TABLE>
 <TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%"><TR><TD COLSPAN="3" BGCOLOR="#D2D9D2" HEIGHT="6"></TD>
@@ -43,7 +43,7 @@ a.l2:active  { color:#BC0024; }
 <p class="B"> Library initialisation</p>
 <p class="B">&nbsp;</p>
 <p class="C"><span class="D">.</span>Version()</p>
-<p class="B"> Returns the library time and date</p>
+<p class="B"> Returns the library version time and date</p>
 <p class="B">&nbsp;</p>
 <p class="C"><span class="D">.</span>EnablePrint(print)</p>
 <p class="B"> Enables or disables message printing by the functions</p>
@@ -57,19 +57,19 @@ a.l2:active  { color:#BC0024; }
 <p class="C"><span class="D">.</span>Wamit</p>
 <p class="E"><span class="D">.Wamit.</span>V6s</p>
 <p class="F"><span class="D">.Wamit.V6s.</span>Set(force)</p>
-<p class="G"> Consider that the Wamit solver to run the cases will be always WamitV6s</p>
+<p class="G"> If force = 1 considers that the Wamit solver to run the cases will be always WamitV6s</p>
 <p class="G">&nbsp;</p>
 <p class="C"><span class="D">.</span>AQWA</p>
 <p class="E"><span class="D">.AQWA.</span>ShowCalculationDialog</p>
 <p class="F"><span class="D">.AQWA.ShowCalculationDialog.</span>Set(show)</p>
-<p class="G"> Show the calculation dialog when running AQWA</p>
+<p class="G"> Is show = 1, shows the calculation dialog when running AQWA</p>
 <p class="G">&nbsp;</p>
 <p class="C"><span class="D">.</span>Mesh</p>
 <p class="E"><span class="D">.Mesh.</span>Clear()</p>
 <p class="H"> Clear all meshes previously loaded</p>
 <p class="H">&nbsp;</p>
 <p class="E"><span class="D">.Mesh.</span>Load(file)</p>
-<p class="H"> Loads a mesh file</p>
+<p class="H"> Loads a mesh file. Returns the mesh id.</p>
 <p class="H">&nbsp;</p>
 <p class="E"><span class="D">.Mesh.</span>Report()</p>
 <p class="H"> Prints main mesh data</p>
@@ -79,13 +79,13 @@ a.l2:active  { color:#BC0024; }
 <p class="G"> Sets the id of the active mesh</p>
 <p class="G">&nbsp;</p>
 <p class="F"><span class="D">.Mesh.Id.</span>Get()</p>
-<p class="G"> Gets the id of the active mesh</p>
+<p class="G"> Returns the id of the active mesh</p>
 <p class="G">&nbsp;</p>
 <p class="E"><span class="D">.Mesh.</span>Save(file, format, symX, symY)</p>
-<p class="H"> Saves the mesh in the indicated file with the mesh format</p>
+<p class="H"> Saves the mesh in the indicated file with the mesh format, forcing symmetry in the YZ plane(symX = 1) and in the XZ plane(symY = 1)</p>
 <p class="H">&nbsp;</p>
-<p class="E"><span class="D">.Mesh.</span>Translate(x, y, z)</p>
-<p class="H"> Translates the mesh</p>
+<p class="E"><span class="D">.Mesh.</span>Translate(dx, dy, dz)</p>
+<p class="H"> Translates the mesh a distance</p>
 <p class="H">&nbsp;</p>
 <p class="E"><span class="D">.Mesh.</span>Rotate(ax, ay, az, cx, cy, cz)</p>
 <p class="H"> Rotates the mesh. ax,ay,az are the angles in degrees, cx, cy, cz is the centre of rotation</p>
@@ -95,14 +95,14 @@ a.l2:active  { color:#BC0024; }
 <p class="G"> Sets the centre of gravity</p>
 <p class="G">&nbsp;</p>
 <p class="F">[x, y, z] = <span class="D">.Mesh.Cg.</span>Get()</p>
-<p class="G"> Gets the centre of gravity</p>
+<p class="G"> Returns the centre of gravity</p>
 <p class="G">&nbsp;</p>
 <p class="E"><span class="D">.Mesh.</span>C0</p>
 <p class="F"><span class="D">.Mesh.C0.</span>Set(x, y, z)</p>
 <p class="G"> Sets the centre of rotation or reference system</p>
 <p class="G">&nbsp;</p>
 <p class="F">[x, y, z] = <span class="D">.Mesh.C0.</span>Get()</p>
-<p class="G"> Gets the centre of rotation or reference system</p>
+<p class="G"> Returns the centre of rotation or reference system</p>
 <p class="G">&nbsp;</p>
 <p class="E"><span class="D">.Mesh.</span>Mass</p>
 <p class="F"><span class="D">.Mesh.Mass.</span>Set(mass)</p>
@@ -157,11 +157,11 @@ a.l2:active  { color:#BC0024; }
 <p class="E"><span class="D">.Mesh.</span>Centre</p>
 <p class="F"><span class="D">.Mesh.Centre.</span>Volume</p>
 <p class="I">[x, y, z] = <span class="D">.Mesh.Centre.Volume.</span>Get()</p>
-<p class="J"> Gets the centroid of the body</p>
+<p class="J"> Returns the centroid of the body</p>
 <p class="J">&nbsp;</p>
 <p class="F"><span class="D">.Mesh.Centre.</span>Surface</p>
 <p class="I">[x, y, z] = <span class="D">.Mesh.Centre.Surface.</span>Get()</p>
-<p class="J"> Gets the centre of gravity of the surface</p>
+<p class="J"> Returns the centre of gravity of the surface</p>
 <p class="J">&nbsp;</p>
 <p class="E"><span class="D">.Mesh.</span>HydrostaticStiffness</p>
 <p class="F">[data] = <span class="D">.Mesh.HydrostaticStiffness.</span>Get()</p>
@@ -169,18 +169,18 @@ a.l2:active  { color:#BC0024; }
 <p class="G">&nbsp;</p>
 <p class="E"><span class="D">.Mesh.</span>NumPanels</p>
 <p class="F"><span class="D">.Mesh.NumPanels.</span>Get()</p>
-<p class="G"> Gets the number of panels of the mesh</p>
+<p class="G"> Returns the number of panels of the mesh</p>
 <p class="G">&nbsp;</p>
 <p class="E"><span class="D">.Mesh.</span>VolumeEnvelope</p>
 <p class="F">[minx, maxx, miny, maxy, minz, maxz] = <span class="D">.Mesh.VolumeEnvelope.</span>Get()</p>
-<p class="G"> Gets the envelope around the mesh</p>
+<p class="G"> Returns the envelope around the mesh</p>
 <p class="G">&nbsp;</p>
 <p class="E"><span class="D">.Mesh.</span>Name</p>
 <p class="F"><span class="D">.Mesh.Name.</span>Set(name)</p>
 <p class="G"> Sets the name of the body</p>
 <p class="G">&nbsp;</p>
 <p class="F"><span class="D">.Mesh.Name.</span>Get()</p>
-<p class="G"> Gets the name of the body</p>
+<p class="G"> Returns the name of the body</p>
 <p class="G">&nbsp;</p>
 <p class="C"><span class="D">.</span>Bem</p>
 <p class="E"><span class="D">.Bem.</span>Clear()</p>
@@ -194,7 +194,7 @@ a.l2:active  { color:#BC0024; }
 <p class="G"> Sets the name of the active model</p>
 <p class="G">&nbsp;</p>
 <p class="F"><span class="D">.Bem.Name.</span>Get()</p>
-<p class="G"> Gets the name of the active model</p>
+<p class="G"> Returns the name of the active model</p>
 <p class="G">&nbsp;</p>
 <p class="E"><span class="D">.Bem.</span>Load(file)</p>
 <p class="H"> Loads a BEM case</p>
@@ -207,10 +207,10 @@ a.l2:active  { color:#BC0024; }
 <p class="G"> Sets the id of the active model</p>
 <p class="G">&nbsp;</p>
 <p class="F"><span class="D">.Bem.Id.</span>Get()</p>
-<p class="G"> Gets the id of the active model</p>
+<p class="G"> Returns the id of the active model</p>
 <p class="G">&nbsp;</p>
 <p class="E"><span class="D">.Bem.</span>size()</p>
-<p class="H"> Gets the number of bem cases</p>
+<p class="H"> Returns the number of bem cases</p>
 <p class="H">&nbsp;</p>
 <p class="E">[irregular, autoIrregular, middle7, far8, near9, autoCS, multibody] = <span class="D">.Bem.</span>Support(solver)</p>
 <p class="H"> Returns the multibody and QTF capabilities of the solver: &quot;Wamit .out&quot;, &quot;AQWA .dat&quot;, &quot;OrcaWave .yml&quot;, &quot;HydroStar .hsg&quot;, &quot;HAMS&quot;, &quot;HAMS MREL&quot;, &quot;Nemoh v3&quot;, &quot;Diffrac .xml&quot;, &quot;Capytaine .py&quot;</p>
@@ -236,20 +236,20 @@ a.l2:active  { color:#BC0024; }
 <p class="G"> Sets the range of frequencies</p>
 <p class="G">&nbsp;</p>
 <p class="F">[data] = <span class="D">.Bem.w.</span>Get()</p>
-<p class="G"> Gets the range of frequencies</p>
+<p class="G"> Returns the range of frequencies</p>
 <p class="G">&nbsp;</p>
 <p class="F"><span class="D">.Bem.w.</span>size()</p>
-<p class="G"> Gets the number of frequencies</p>
+<p class="G"> Returns the number of frequencies</p>
 <p class="G">&nbsp;</p>
 <p class="E"><span class="D">.Bem.</span>headings</p>
 <p class="F"><span class="D">.Bem.headings.</span>Set(head)</p>
 <p class="G"> Sets the range of headings</p>
 <p class="G">&nbsp;</p>
 <p class="F">[data] = <span class="D">.Bem.headings.</span>Get()</p>
-<p class="G"> Gets the range of headings</p>
+<p class="G"> Returns the range of headings</p>
 <p class="G">&nbsp;</p>
 <p class="F"><span class="D">.Bem.headings.</span>size()</p>
-<p class="G"> Gets the number of headings</p>
+<p class="G"> Returns the number of headings</p>
 <p class="G">&nbsp;</p>
 <p class="E"><span class="D">.Bem.</span>Duplicate()</p>
 <p class="H"> Copies a Bem case into other</p>
@@ -259,7 +259,7 @@ a.l2:active  { color:#BC0024; }
 <p class="H">&nbsp;</p>
 <p class="E"><span class="D">.Bem.</span>FroudeKrylov</p>
 <p class="F"><span class="D">.Bem.FroudeKrylov.</span>Calc()</p>
-<p class="G"> Gets the incident or Froude-Krylov wave force for all the bodies</p>
+<p class="G"> Returns the incident or Froude-Krylov wave force for all the bodies</p>
 <p class="G">&nbsp;</p>
 <p class="E"><span class="D">.Bem.</span>Diffraction</p>
 <p class="F"><span class="D">.Bem.Diffraction.</span>Reset()</p>
@@ -270,7 +270,7 @@ a.l2:active  { color:#BC0024; }
 <p class="G"> Fill with zeroes for all the bodies the excitation forces</p>
 <p class="G">&nbsp;</p>
 <p class="F"><span class="D">.Bem.Excitation.</span>GetFromDiffFK()</p>
-<p class="G"> Gets the excitation force by summing the Froude-Krylov and diffraction scattering forces</p>
+<p class="G"> Returns the excitation force by summing the Froude-Krylov and diffraction scattering forces</p>
 <p class="G">&nbsp;</p>
 <p class="E"><span class="D">.Bem.</span>AddedMass</p>
 <p class="F"><span class="D">.Bem.AddedMass.</span>Reset()</p>
@@ -317,7 +317,7 @@ a.l2:active  { color:#BC0024; }
 <p class="G">&nbsp;</p>
 <p class="E"><span class="D">.Bem.</span>Mesh</p>
 <p class="F"><span class="D">.Bem.Mesh.</span>size()</p>
-<p class="G"> Gets the number of bem cases</p>
+<p class="G"> Returns the number of bem cases</p>
 <p class="G">&nbsp;</p>
 <p class="C"><span class="D">.</span>FAST</p>
 <p class="E"><span class="D">.FAST.</span>Load(filename)</p>
