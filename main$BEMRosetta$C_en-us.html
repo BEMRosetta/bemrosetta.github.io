@@ -138,10 +138,13 @@ a.l2:active  { color:#BC0024; }
 <p class="J">Extract in new model the mesh underwater hull</p>
 <p class="J">&nbsp;</p>
 <p class="G"> <span class="D">int</span> <span class="E">.Mesh.</span>FillWaterplane(double ratio, int quads)</p>
-<p class="J">Generates in new model the waterplane lid with mesh size ratio</p>
+<p class="J">Generates in new mesh the waterplane lid with mesh size ratio</p>
 <p class="J">&nbsp;</p>
 <p class="G"> <span class="D">int</span> <span class="E">.Mesh.</span>GetControlSurface(double distance, double ratio, int quads, int bottom, int top)</p>
-<p class="J">Generates in new model a control surface mesh at a distance and with a size ratio</p>
+<p class="J">Generates in new mesh a control surface mesh at a distance and with a size ratio. Returns the new mesh id.</p>
+<p class="J">&nbsp;</p>
+<p class="G"> <span class="D">int</span> <span class="E">.Mesh.</span>GetControlSurfaceIds(const double *mids, int dim, double distance, double ratio, int quads, int bottom, int top)</p>
+<p class="J">Generates in new meshes the non overlapping control surfaces at a distance and with a size ratio, considering a set of meshes. Returns the id of the first of the created meshes.</p>
 <p class="J">&nbsp;</p>
 <p class="G"><span class="F">.Mesh.</span>Volume</p>
 <p class="H"> <span class="D">bool</span> <span class="E">.Mesh.Volume.</span>Get(double *volx, double *voly, double *volz)</p>

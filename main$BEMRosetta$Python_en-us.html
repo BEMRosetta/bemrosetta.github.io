@@ -133,10 +133,13 @@ a.l2:active  { color:#BC0024; }
 <p class="H"> Extract in new model the mesh underwater hull</p>
 <p class="H">&nbsp;</p>
 <p class="E"><span class="D">.Mesh.</span>FillWaterplane(ratio, quads)</p>
-<p class="H"> Generates in new model the waterplane lid with mesh size ratio</p>
+<p class="H"> Generates in new mesh the waterplane lid with mesh size ratio</p>
 <p class="H">&nbsp;</p>
 <p class="E"><span class="D">.Mesh.</span>GetControlSurface(distance, ratio, quads, bottom, top)</p>
-<p class="H"> Generates in new model a control surface mesh at a distance and with a size ratio</p>
+<p class="H"> Generates in new mesh a control surface mesh at a distance and with a size ratio. Returns the new mesh id.</p>
+<p class="H">&nbsp;</p>
+<p class="E"><span class="D">.Mesh.</span>GetControlSurfaceIds(mids, distance, ratio, quads, bottom, top)</p>
+<p class="H"> Generates in new meshes the non overlapping control surfaces at a distance and with a size ratio, considering a set of meshes. Returns the id of the first of the created meshes.</p>
 <p class="H">&nbsp;</p>
 <p class="E"><span class="D">.Mesh.</span>Volume</p>
 <p class="F">[volx, voly, volz] = <span class="D">.Mesh.Volume.</span>Get()</p>
